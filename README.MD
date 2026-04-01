@@ -24,6 +24,25 @@ Make sure you have:
 - Python 3.8+
 - FFmpeg installed on your system
 
+## 🔧 Install FFmpeg
+
+### Ubuntu / WSL
+
+sudo apt update
+sudo apt install ffmpeg
+
+### macOS (Homebrew)
+
+brew install ffmpeg
+
+### Windows
+
+Download from https://ffmpeg.org/download.html
+
+Check installation:
+
+ffmpeg -version
+
 Install dependencies:
 
 ```bash
