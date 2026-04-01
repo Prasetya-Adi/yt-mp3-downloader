@@ -1,0 +1,15 @@
+# Virtual environment
+download_yt/
+
+# VSCode settings
+.vscode/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment file
+.env
+
+# OS file
+.DS_Store
