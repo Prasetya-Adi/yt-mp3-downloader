@@ -1,8 +1,8 @@
 # 🎵 YouTube to MP3 Downloader (Clean CLI)
 
-A simple and clean Python script to download audio from YouTube videos or playlists and convert them into high-quality MP3 files.
+A simple and clean Python CLI tool to download audio from YouTube videos or playlists and convert them into high-quality MP3 files.
 
-Built using `yt-dlp`, with a minimal and user-friendly command-line output.
+Built using `yt-dlp`, with minimal and readable command-line output.
 
 ---
 
@@ -17,36 +17,46 @@ Built using `yt-dlp`, with a minimal and user-friendly command-line output.
 
 ---
 
-## 📦 Requirements
+## 📁 Project Structure
 
-Make sure you have:
+```
+ytmp3download/
+├── main.py          # Entry point — run this file
+├── downloader.py    # Core download logic
+├── logger.py        # Custom output filter for yt-dlp
+├── hooks.py         # Progress hooks (status: finished / error)
+├── utils.py         # URL validation and folder helper
+└── requirements.txt
+```
+
+---
+
+## 📦 Requirements
 
 - Python 3.8+
 - FFmpeg installed on your system
 
-## 🔧 Install FFmpeg
+### Install FFmpeg
 
-### Ubuntu / WSL
-
-sudo apt update
-sudo apt install ffmpeg
-
-### macOS (Homebrew)
-
-brew install ffmpeg
-
-### Windows
-
-Download from https://ffmpeg.org/download.html
-
-Check installation:
-
-ffmpeg -version
-
-Install dependencies:
+**Ubuntu / WSL**
 
 ```bash
-pip install -r requirements.txt
+sudo apt update && sudo apt install ffmpeg
+```
+
+**macOS (Homebrew)**
+
+```bash
+brew install ffmpeg
+```
+
+**Windows**
+Download from https://ffmpeg.org/download.html
+
+Verify installation:
+
+```bash
+ffmpeg -version
 ```
 
 ---
@@ -60,7 +70,7 @@ git clone https://github.com/prasetya-adi/ytmp3download.git
 cd ytmp3download
 ```
 
-Install dependencies:
+Install Python dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -70,23 +80,27 @@ pip install -r requirements.txt
 
 ## 🚀 Usage
 
-### ▶️ Basic Usage
+### Basic usage
 
 ```bash
 python main.py <youtube_url>
 ```
 
-Example:
+Example — single video:
+
+```bash
+python main.py https://www.youtube.com/watch?v=XXXX
+```
+
+Example — playlist:
 
 ```bash
 python main.py https://www.youtube.com/playlist?list=XXXX
 ```
 
----
+### Interactive mode
 
-### ⌨️ Interactive Mode
-
-If no URL is provided, the script will ask for input:
+If no URL is provided, the script will prompt for input:
 
 ```bash
 python main.py
@@ -96,7 +110,7 @@ python main.py
 
 ## 📂 Output
 
-All downloaded MP3 files will be saved in:
+All MP3 files will be saved to:
 
 ```
 downloads/
@@ -107,27 +121,29 @@ downloads/
 ## 🖥️ Example Output
 
 ```
+🔍 Mengambil info playlist/video...
 📦 Total item: 10
 
-🚀 Start downloading...
+🚀 Mulai download...
 
-[1/10] ⬇️ song1.mp3 ... ✅
-[2/10] ⏭️ Skip
-[3/10] ⬇️ song2.mp3 ... ✅
+[1/10] ⬇️  Song Title 1.webm ... ✅
+[2/10] ⏭️  Skip (sudah ada)
+[3/10] ⬇️  Song Title 2.webm ... ✅
 
-✅ All done!
+✅ Semua selesai!
 ```
+
+> Note: The filename shown during download reflects the original format before conversion.
+> The final saved file will be `.mp3`.
 
 ---
 
 ## ⚠️ Notes
 
-- FFmpeg is required for audio conversion
-  👉 Make sure it's installed and available in your system PATH
-
-- Already downloaded files will be skipped automatically
-
-- The script uses `yt-dlp`, so it supports many platforms beyond YouTube
+- FFmpeg must be installed and available in your system `PATH` for audio conversion to work
+- Already downloaded files are skipped automatically
+- If a video is unavailable (private, geo-blocked, etc.), it will be skipped and the download will continue
+- `yt-dlp` supports many platforms beyond YouTube
 
 ---
 
